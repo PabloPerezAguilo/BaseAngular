@@ -1,0 +1,22 @@
+{
+  "name": "Lisa",
+  "version": "1.0.0",
+  "description": "Lisa Front",
+  "main": "gulpfile.js",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-angular-htmlify": "^2.3.0",
+    "gulp-clean": "^0.3.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-connect": "^2.2.0",
+    "gulp-html-replace": "^1.5.1",
+    "gulp-jshint": "^1.11.2",
+    "gulp-ng-annotate": "^1.0.0",
+    "gulp-open": "^0.3.2",
+    "gulp-sequence": "^0.4.0",
+    "gulp-uglify": "^1.2.0",
+    "gulp-war": "0.0.1",
+    "gulp-zip": "^3.0.2",
+    "run-sequence": "^1.1.1"
+  }
+}
