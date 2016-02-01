@@ -1,0 +1,22 @@
+[
+	{
+		"id": 1,
+		"nombre":"elemento1",
+		"atributo":"contenido1"
+	},
+	{
+		"id": 2,
+		"nombre":"elemento2",
+		"atributo":"contenido2"
+	},
+	{
+		"id": 3,
+		"nombre":"elemento3",
+		"atributo":"contenido3"
+	},
+	{
+		"id": 4,
+		"nombre":"elemento4",
+		"atributo":"contenido4"
+	}
+]

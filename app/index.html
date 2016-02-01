@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Arquetipo Base</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- build:CSSCDNs -->
+	<link rel="stylesheet" type="text/css" href="/angular.css">
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<!-- endbuild -->
+
+</head>
+<body ng-cloak>
+	<header >
+		<div translate>{{'TITLE'}}</div>
+		
+		<a href="#/seccion1">Seccion1</a>
+		<a href="#/seccion2">Seccion2</a>
+	</header>
+	
+	<div class="container" ng-view></div>
+	<footer>
+		<p translate>{{'FOOTER'}}</p>
+	</footer>
+
+	<!-- build:JS -->     
+	<script src="/angular.js"></script>
+	<script src="/angular-route.js"></script>
+	<script src="/angular-translate.js"></script>
+	<script src="/angular-translate-loader-static-files.js"></script>
+
+	<script src="/app.js"></script>
+	<script src="/config.js"></script>
+	<script src="/service.js"></script>
+	<script src="/modules/module1/controller1.js"></script>
+	<script src="/modules/module2/controller2.js"></script>
+	<!-- endbuild -->
+
+</body>
+</html>

@@ -1,6 +1,8 @@
-# BaseAngular
-Un esquema inicial con Angular
+# AngularJS Base #
 
-Este proyecto ofrece la base para comenzar a desarrollar un front consumiento un backend de servicios REST basado en el proyecto XONGER (https://github.com/PabloPerezAguilo/Xonger).
-
-La autenticacion esta basada en HTTP Authentication 
+Proyecto fronend con los siguientes frameworks/tecnologias:
+  - AngularJS
+  - Gulp (Livereload, minificado, etc)
+  - SASS
+ 
+Soporta internacionalizacion con carga dinamica de ficheros.

@@ -1,0 +1,44 @@
+@import 'reset';
+
+$colorFondo: #CACACA;
+
+@mixin sombra($h,$v,$blur,$spread, $color) {
+	-webkit-box-shadow: $h $v $blur $spread $color;
+	-moz-box-shadow: $h $v $blur $spread $color;
+	box-shadow: $h $v $blur $spread $color;
+}
+
+@mixin bordeRedondeado($a,$b,$c,$d) {
+	-moz-border-radius: $a $b $c $d;
+	-webkit-border-radius: $a $b $c $d;
+	border-radius: $a $b $c $d;
+}
+
+@font-face { 
+	font-family: 'principalCursiva';
+	src: url('fonts/HelveticaNeueLTStd-LtCnO.otf');
+}
+
+header {
+	background-color: $colorFondo;
+	width: 100%;
+	height: 7%;
+	position: fixed;
+	text-align: center;
+}
+
+.container {
+	top: 15%;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+}
+
+footer{
+	background-color: $colorFondo;
+	width: 100%;
+	height: 3%;
+	position: fixed;
+	text-align: center;
+	bottom: 0;
+}
