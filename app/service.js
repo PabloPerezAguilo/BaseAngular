@@ -29,14 +29,15 @@ app.service('services', function ($http, $q, $rootScope, config) {
 	}
 
 	/* ---------- SERVICIOS ---------- */
+
+	// Se devuelve un objeto con un atributo por cada servicio disponible
 	return {
-		getElementos : function (nuevaEncuesta) {
+		getElementos : function () {
 			return peticionHTTP({
 				method: 'GET',
-				url: url + '/elementos',
-				data: nuevaEncuesta
+				url: url + '/elementos'
 			});
 		}
-	}
+	};
 	
 });
