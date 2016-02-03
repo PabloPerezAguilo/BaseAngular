@@ -22,6 +22,8 @@ var names = {
 	anyHTML : "/**/*.html",
 	anyCSS : "/**/*.css",
 	anySCSS : "/**/*.scss",
+	minJS : "app.min.js",
+	minCSS : "app.min.css"
 }
 
 
@@ -79,14 +81,14 @@ gulp.task('minifyJS', function () {
 	// Minificamos todos los JS de la aplicacion
 	// ToDo: si se desea especificar un orden de empaquetado de JS ira aqui, sino sera alfabetico
 	gulp.src([paths.lib+'/angular.js',paths.lib+'/angular-translate.js',paths.lib+names.anyJS,paths.app+'/app.js',paths.app+'/config.js',paths.app+'/service.js',paths.app+'/**/*.js'])
-	.pipe(concat('app.min.js'))
+	.pipe(concat(minJS))
 	.pipe(ngAnnotate())
 	.pipe(uglify())
 	.pipe(gulp.dest(paths.target));
 	// Reemplazamos en el index la referencia de todos los JS al minificado
 	return gulp.src(paths.target+'/index.html')
 	.pipe(htmlreplace({
-		'JS': ['app.min.js']
+		'JS': [minJS]
 	},{'keepUnassigned':true,'keepBlockTags':true}))
 	.pipe(gulp.dest(paths.target));
 });
@@ -95,13 +97,13 @@ gulp.task('minifyCSS', function () {
 	// Minificamos todos los CSS de la aplicacion
 	// ToDo: si se desea especificar un orden de empaquetado de CSS ira aqui, sino sera alfabetico
 	gulp.src([paths.css+'/reset.css',paths.lib+names.anyCSS,paths.css+names.anyCSS])
-	.pipe(concat('app.min.css'))
-	.pipe(sass().on('error', sass.logError))
+	.pipe(concat(minCSS))
+	.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
 	.pipe(gulp.dest(paths.target));
 	// Reemplazamos en el index la referencia de todos los CSS al minificado
 	return gulp.src(paths.target+'/index.html')
 	.pipe(htmlreplace({
-		'CSS': ['app.min.css']
+		'CSS': [minCSS]
 	},{'keepUnassigned':true,'keepBlockTags':true}))
 	.pipe(gulp.dest(paths.target));
 });

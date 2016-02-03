@@ -9,6 +9,7 @@
 
 	<!-- build:CSS -->
 	<link rel="stylesheet" type="text/css" href="/angular.css">
+	<link rel="stylesheet" type="text/css" href="/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
 	<!-- endbuild -->
 
@@ -17,18 +18,19 @@
 	<header >
 		<div translate>{{'TITLE'}}</div>
 		
-		<a href="#/seccion1">Seccion1</a>
-		<a href="#/seccion2">Seccion2</a>
+		<a ui-sref="seccion1">Seccion1</a>
+		<a ui-sref="seccion2">Seccion2</a>
+		<a ui-sref="seccion3">Seccion3</a>
 	</header>
 	
-	<div class="container" ng-view></div>
+	<div class="container" ui-view></div>
 	<footer>
 		<p translate>{{'FOOTER'}}</p>
 	</footer>
 
 	<!-- build:JS -->     
 	<script src="/angular.js"></script>
-	<script src="/angular-route.js"></script>
+	<script src="/angular-ui-router.js"></script>
 	<script src="/angular-translate.js"></script>
 	<script src="/angular-translate-loader-static-files.js"></script>
 
