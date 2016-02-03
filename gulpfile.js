@@ -1,12 +1,12 @@
-var gulp = require('gulp');
-var lr = require('gulp-livereload');
-var concat = require('gulp-concat');
-var uglify = require('gulp-uglify');
-var ngAnnotate = require('gulp-ng-annotate');
-var htmlreplace = require('gulp-html-replace');
-var htmlify = require('gulp-angular-htmlify');
-var sass = require('gulp-sass');
-var jshint = require('gulp-jshint');
+var gulp = require('gulp'),
+lr = require('gulp-livereload'),
+concat = require('gulp-concat'),
+uglify = require('gulp-uglify'),
+ngAnnotate = require('gulp-ng-annotate'),
+htmlreplace = require('gulp-html-replace'),
+htmlify = require('gulp-angular-htmlify'),
+sass = require('gulp-sass'),
+jshint = require('gulp-jshint');
 
 var paths = {
 	app : "app",
@@ -77,46 +77,52 @@ gulp.task('copy', function () {
 	.pipe(gulp.dest(paths.target));
 });
 
-gulp.task('minifyJS', function () {
+gulp.task('minifyJS_fuentes', function () {
 	// Minificamos todos los JS de la aplicacion
 	// ToDo: si se desea especificar un orden de empaquetado de JS ira aqui, sino sera alfabetico
-	gulp.src([paths.lib+'/angular.js',paths.lib+'/angular-translate.js',paths.lib+names.anyJS,paths.app+'/app.js',paths.app+'/config.js',paths.app+'/service.js',paths.app+'/**/*.js'])
-	.pipe(concat(minJS))
+	return gulp.src([paths.lib+'/angular.js',paths.lib+'/angular-translate.js',paths.lib+names.anyJS,paths.app+'/app.js',paths.app+'/config.js',paths.app+'/service.js',paths.app+'/**/*.js'])
+	.pipe(concat(names.minJS))
 	.pipe(ngAnnotate())
 	.pipe(uglify())
 	.pipe(gulp.dest(paths.target));
+});
+
+gulp.task('minifyJS', ['minifyJS_fuentes'] , function () {
 	// Reemplazamos en el index la referencia de todos los JS al minificado
 	return gulp.src(paths.target+'/index.html')
 	.pipe(htmlreplace({
-		'JS': [minJS]
+		'JS': [names.minJS]
 	},{'keepUnassigned':true,'keepBlockTags':true}))
 	.pipe(gulp.dest(paths.target));
 });
 
-gulp.task('minifyCSS', function () {
+gulp.task('minifyCSS_fuentes', function () {
 	// Minificamos todos los CSS de la aplicacion
 	// ToDo: si se desea especificar un orden de empaquetado de CSS ira aqui, sino sera alfabetico
-	gulp.src([paths.css+'/reset.css',paths.lib+names.anyCSS,paths.css+names.anyCSS])
-	.pipe(concat(minCSS))
+	return gulp.src([paths.css+'/reset.css',paths.lib+names.anyCSS,paths.css+names.anyCSS])
+	.pipe(concat(names.minCSS))
 	.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
 	.pipe(gulp.dest(paths.target));
+});
+
+gulp.task('minifyCSS', ['minifyCSS_fuentes'], function () {
 	// Reemplazamos en el index la referencia de todos los CSS al minificado
 	return gulp.src(paths.target+'/index.html')
 	.pipe(htmlreplace({
-		'CSS': [minCSS]
+		'CSS': [names.minCSS]
 	},{'keepUnassigned':true,'keepBlockTags':true}))
 	.pipe(gulp.dest(paths.target));
 });
 
 // Debe lanzarse antes que las tareas de minificados
 gulp.task('htmlify', function() {
-    gulp.src([paths.app+names.anyHTML])
+    return gulp.src([paths.app+names.anyHTML])
         .pipe(htmlify())
         .pipe(gulp.dest(paths.target));
 });
 
 // Levanta el servidor en modo test
-gulp.task('startTestServer', function () {
+gulp.task('startProductionServer', ['copy','htmlify','minifyJS','minifyCSS'], function () {
 	startExpress("test");
 });
 
