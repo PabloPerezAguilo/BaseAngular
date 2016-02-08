@@ -36,7 +36,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
 	})
 	.state('seccion2.hi', {
 		url: "/hi",
-		template: "<h1>Hellow {{param}}!</h1>"
+		template: "<h1>Hello!</h1>"
 	})
 	.state('seccion2.bye', {
 		url: "/bye",

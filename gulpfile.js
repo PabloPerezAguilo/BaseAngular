@@ -1,12 +1,13 @@
 var gulp = require('gulp'),
-lr = require('gulp-livereload'),
-concat = require('gulp-concat'),
-uglify = require('gulp-uglify'),
-ngAnnotate = require('gulp-ng-annotate'),
-htmlreplace = require('gulp-html-replace'),
-htmlify = require('gulp-angular-htmlify'),
-sass = require('gulp-sass'),
-jshint = require('gulp-jshint');
+	lr = require('gulp-livereload'),
+	concat = require('gulp-concat'),
+	uglify = require('gulp-uglify'),
+	ngAnnotate = require('gulp-ng-annotate'),
+	htmlreplace = require('gulp-html-replace'),
+	htmlify = require('gulp-angular-htmlify'),
+	sass = require('gulp-sass'),
+	jshint = require('gulp-jshint'),
+	minifyCss = require('gulp-minify-css');
 
 var paths = {
 	app : "app",
@@ -101,7 +102,7 @@ gulp.task('minifyCSS_fuentes', function () {
 	// ToDo: si se desea especificar un orden de empaquetado de CSS ira aqui, sino sera alfabetico
 	return gulp.src([paths.css+'/reset.css',paths.lib+names.anyCSS,paths.css+names.anyCSS])
 	.pipe(concat(names.minCSS))
-	.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+	.pipe(minifyCss({compatibility: 'ie8'}))
 	.pipe(gulp.dest(paths.target));
 });
 
