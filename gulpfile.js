@@ -7,7 +7,11 @@ var gulp = require('gulp'),
 	htmlify = require('gulp-angular-htmlify'),
 	sass = require('gulp-sass'),
 	jshint = require('gulp-jshint'),
-	minifyCss = require('gulp-minify-css');
+	minifyCss = require('gulp-minify-css'),
+	autoprefixer = require('gulp-autoprefixer');
+
+// Necesario para versiones antiguas de Node
+require('es6-promise').polyfill();
 
 var paths = {
 	app : "app",
@@ -63,8 +67,12 @@ function notifyLivereload(file) {
 gulp.task('compileCSS', function () {
 	console.log("Actualizando CSSs");
 	return gulp.src([paths.scss+'/reset.scss',paths.scss+names.anySCSS])
-	.pipe(sass().on('error', sass.logError))
-	.pipe(gulp.dest(paths.css));
+   .pipe(sass().on('error', sass.logError))
+      .pipe(autoprefixer({
+         browsers: ['last 2 versions'],
+         cascade: false
+      }))
+   .pipe(gulp.dest(paths.css));
 });
 
 gulp.task('validate', function () {

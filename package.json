@@ -5,9 +5,11 @@
   "dependencies": {
     "connect-livereload": "^0.5.4",
     "cors": "^2.7.1",
+    "es6-promise": "^3.1.2",
     "express": "^4.13.3",
     "gulp": "^3.9.0",
     "gulp-angular-htmlify": "^2.3.0",
+    "gulp-autoprefixer": "^3.1.0",
     "gulp-concat": "^2.6.0",
     "gulp-html-replace": "^1.5.5",
     "gulp-jshint": "^1.11.2",
