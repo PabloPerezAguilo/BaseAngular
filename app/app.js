@@ -22,7 +22,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
 	$stateProvider
 	.state('inicio', {
 		url: "/inicio",
-		template: "Pagina por defecto'"
+		template: "Pagina por defecto"
 	})
 	.state('seccion1', {
 		url: "/seccion1",

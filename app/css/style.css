@@ -8,7 +8,6 @@ header {
   height: 7%;
   position: fixed;
   text-align: center;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex; }
 
