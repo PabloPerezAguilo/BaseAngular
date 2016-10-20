@@ -48,6 +48,9 @@ function startExpress(environment) {
         app.get('/api/:fichero', function (req, res) {
             res.sendFile(req.params.fichero + '.json', {root: './mocks'});
         });
+        app.all('/*', function(req, res) {
+            res.sendfile(__dirname + '/' + paths.app + '/index.html');
+        });
 
         // Start livereload
         lr.listen(35729);

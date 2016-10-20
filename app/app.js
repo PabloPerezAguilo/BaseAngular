@@ -14,10 +14,11 @@ app.config(['$translateProvider', function ($translateProvider) {
 	$translateProvider.useSanitizeValueStrategy('escaped');
 }]);
 
-app.config(function($stateProvider, $urlRouterProvider) {
+app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
 	var path = "modules/";
 	$urlRouterProvider.otherwise("/inicio");
+	$locationProvider.html5Mode(true)
 
 	$stateProvider
 	.state('inicio', {
